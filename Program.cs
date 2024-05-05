@@ -10,10 +10,7 @@ namespace Costdle
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
 
-            builder.Services.AddDbContext<DataContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+            builder.Services.AddDbContext<DataContext>();
 
             app.MapGet("/", () => "Hello World!");
 
