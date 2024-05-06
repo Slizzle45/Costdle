@@ -1,4 +1,4 @@
-﻿namespace Costdle.Entities
+﻿namespace Costdle.Models
 {
     public class Product
     {

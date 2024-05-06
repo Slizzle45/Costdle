@@ -25,7 +25,7 @@ namespace Costdle.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Costdle.Entities.Product", b =>
+            modelBuilder.Entity("Costdle.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
