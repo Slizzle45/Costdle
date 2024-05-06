@@ -1,15 +1,16 @@
 ﻿using Costdle.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Costdle.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class ProductController : HomeController
     {
         private readonly DataContext _dbContext;
 
-        public ProductController(DataContext dbcontext)
+        public eski(DataContext dbcontext)
         {
             _dbContext = dbcontext;
         }
