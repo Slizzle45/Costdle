@@ -16,18 +16,27 @@ namespace Costdle.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllHeroes()
+        public async Task<ActionResult<List<Product>>> GetAllProducts()
         {
             var products = await _dbContext.Products.ToListAsync();
 
             return Ok(products);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<Product>>> GetProduct(int id)
+        {
+            var product = await _dbContext.Products.FindAsync(id);
+            if(product is null)
+                return NotFound("Hero not found.");
+            return Ok(product);
+        }
+
         //Create
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _dbContext.Products.Add(product);
                 _dbContext.SaveChanges();
