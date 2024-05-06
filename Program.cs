@@ -1,4 +1,4 @@
-using Costdle.Data;
+using Costdle.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Costdle

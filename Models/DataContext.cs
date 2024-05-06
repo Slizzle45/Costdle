@@ -1,7 +1,6 @@
-﻿using Costdle.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Costdle.Data
+namespace Costdle.Models
 {
     public class DataContext : DbContext
     {

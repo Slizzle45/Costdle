@@ -1,12 +1,11 @@
-﻿using Costdle.Data;
-using Costdle.Entities;
+﻿using Costdle.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Costdle.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : HomeController
     {
         private readonly DataContext _dbContext;
 
@@ -24,7 +23,7 @@ namespace Costdle.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Product>>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _dbContext.Products.FindAsync(id);
             if(product is null)
@@ -34,15 +33,15 @@ namespace Costdle.Controllers
 
         //Create
         [HttpPost]
-        public IActionResult Create(Product product)
+        public async Task<ActionResult<List<Product>>> CreateProduct(Product product)
         {
             if(ModelState.IsValid)
             {
                 _dbContext.Products.Add(product);
-                _dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                await _dbContext.SaveChangesAsync();
+                //return RedirectToAction("Index");
             }
-            return View(product);
+            return Ok(await _dbContext.Products.ToListAsync());
         }
     }
 }
