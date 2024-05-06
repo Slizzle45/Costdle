@@ -10,7 +10,7 @@ namespace Costdle.Models
         //}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=CostdleDB;Trusted_Connection=true;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("DefaultConnection");//appsettings.json
         }
 
         public DbSet<Product> Products { get; set; }

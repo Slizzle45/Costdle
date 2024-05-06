@@ -7,10 +7,19 @@ namespace Costdle
     {
         public static void Main(string[] args)
         {
+            
+
             var builder = WebApplication.CreateBuilder(args);
+            //
+            builder.Services.AddDbContext<DataContext>();//Connection string on appsettings.json
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            //
             var app = builder.Build();
 
-            builder.Services.AddDbContext<DataContext>();
+
+            
 
             app.MapGet("/", () => "Hello World!");
 
