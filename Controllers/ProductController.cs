@@ -1,6 +1,7 @@
 ﻿using Costdle.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Costdle.Controllers
 {
@@ -10,7 +11,7 @@ namespace Costdle.Controllers
     {
         private readonly DataContext _dbContext;
 
-        public eski(DataContext dbcontext)
+        public ProductController(DataContext dbcontext)
         {
             _dbContext = dbcontext;
         }
